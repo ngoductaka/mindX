@@ -2,33 +2,29 @@
 
 ## I. Mục tiêu
 
- *  Giải quyết vấn
- *  bug cho từng nhóm
- *  review chéo
+ *  Giải quyết vấn đề còn lại ở buổi 5
+ *  Giới thiệu reactjs
 ------
 ## II. Nội dung bài học 
-### 1. Từng thành viên báo cáo về dự án của team
-- Login và jwt (bắt buộc)
+### 1. Giới thiệu reactjs
+- Tài liệu chính thống (https://reactjs.org/)
+- Reactjs là gì? có gì hay
+- các thư viện khác
 
-### 2. Giới thiệu Mongoose
-- ORM là gì
-- Mongoose có gì
-- các phương thức cơ bản
-    - find - findOne 
-    - update - updateOne
-    - delete 
-    - Limit, skip
+### 2. Khái niệm chính
+- JSX ?
+- Props
+    - Khái niệm
+    - Xử lý dữ liệu
+    - vì sao cần props
+- State 
+    - Cách quản lý
+    - vì sao cần state
 
-### 3. Thực hành 
-- Tạo collection
-- thực hành các phương thức cơ bản
-- login căn bản authen - author
- - https://viblo.asia/p/phan-biet-su-khac-nhau-giua-authentication-va-authorization-Eb85oad4Z2G
- - https://jasonwatmore.com/post/2018/11/28/nodejs-role-based-authorization-tutorial-with-example-api
- - https://jasonwatmore.com/post/2018/08/06/nodejs-jwt-authentication-tutorial-with-example-api
+
+### 3. Create a New React App
+- create-react-app 
+- Chương trình đầu tiên
 
 ## III bài tập 
-- Tạo api login
-- sử dụng jwt để author
-- tự dựng 1 cấu trúc dữ liệu để quản lý user 
-- mỗi nhóm chọn 1 dự án để thự hiện trong buổi 5 
+- Làm Form login

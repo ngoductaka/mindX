@@ -13,7 +13,7 @@
 ### 2. NodeJS
 
 - Tổng quan kiến trúc nodejs
-    - Nodejs là gì? vì sao ra đời, khả năng nodejs
+    - Nodejs là gì? vì sao ra đời, khả năng nodejs (https://nodejs.org/en/)
     - tổng quan server-client
     - kiến trúc nodejs
     - giới thiệu core module

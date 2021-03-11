@@ -1,4 +1,4 @@
-# Bài 1 - tổng quan khoá học
+# Bài 1 - Tổng quan khoá học, giới thiệu nodejs
 
 ## I. Mục tiêu
 
@@ -6,24 +6,26 @@
 
  * [Tổng quan nodejs, kiến trúc nodejs ...](###1._NodeJS)
 ------
-## III. Nội dung bài học 
-### 1. NodeJS
+## II. Nội dung bài học 
+
+### 1. Tổng quan khoá học 
+
+### 2. NodeJS
 
 - Tổng quan kiến trúc nodejs
-    - Nodejs ra đời
+    - Nodejs là gì? vì sao ra đời, khả năng nodejs
+    - tổng quan server-client
     - kiến trúc nodejs
-    - các module core
-    - khả năng nodejs
     - giới thiệu core module
+    - https://www.youtube.com/watch?v=8aGhZQkoFbQ
+    - https://www.youtube.com/watch?v=p-iiEDtpy6I
+    
 - Command line interface (CLI) 
-    - chạy thử project nodejs
+    - chạy thử nodejs
 - V8 The javascript Engine
     - js Engine là gì
     - tại sao là v8
-- module, export and require
-    - 
-
-
-
-
-### 2. 
+- NPM, module, export and require
+    - npm là gì
+    - cấu trúc thư mục
+    - khởi tạo chương nodejs

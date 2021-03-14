@@ -1,4 +1,4 @@
-# Bài 3 - Express framework
+# Bài 3-4 - Express framework
 
 ## I. Mục tiêu
 
@@ -24,7 +24,6 @@
 - json là gì
 - dữ liệu là gì, vì sao cần database
 - giới thiệu mongoDB
-
 
 ## III bài tập 
 - tìm hiểu các framework nodejs

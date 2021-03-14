@@ -1,10 +1,7 @@
-# Bài 6 - review project nodejs and prepare for reactjs
 
-## I. Mục tiêu
-
- *  Giải quyết vấn đề còn lại ở buổi 5
- *  Giới thiệu reactjs
-------
+# Bài 11 giưới thiệu Reactjs
+## I. Mục tiêu bài học
+- giới thiệu reactjs
 ## II. Nội dung bài học 
 ### 1. Giới thiệu reactjs
 - Tài liệu chính thống (https://reactjs.org/)

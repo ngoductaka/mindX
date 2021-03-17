@@ -35,4 +35,4 @@
 ## III Tổng kết
 - nodejs là gì
 - event loop của nodejs hoạt động ntn
-- npm là gì và cách sử dụng
+- npm là gì và cách sử dụng, cấu trúc package.json

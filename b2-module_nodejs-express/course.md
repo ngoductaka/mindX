@@ -1,4 +1,4 @@
-# Bài 2 - Các thư module nodejs Express framework
+# Bài 2 - Module nodejs và Express framework
 
 ## I. Mục tiêu
  *  Giới thiệu Express

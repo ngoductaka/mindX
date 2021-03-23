@@ -1,16 +1,36 @@
 # Bài 2 - Module nodejs và Express framework
 
 ## I. Mục tiêu
- *  Tìm hiểu các module nodjs
+ *  Tìm hiểu các module nodejs
  *  Giới thiệu Express
  *  Khởi tạo và chạy dự án đầu tiên với Express
  *  Tìm hiểu các module cần thiết để chạy dự án
 ------
 
-## II. Nội dung bài học 
-### 1. nodejs module
+## 1. nodejs module
+- http
+    * module provides an HTTP client/server implementation
+    ```
+    var http = require('http'); // 1 - Import Node.js core module
+
+    var server = http.createServer(function (req, res) {   // 2 - creating server
+
+        //handle incomming requests here..
+
+    });
+
+    server.listen(5000); //3 - listen for any incoming requests
+
+    console.log('Node.js web server at port 5000 is running..')
+    ```
+- fs
+    * The fs module of Node.js provides useful functions to interact with the file system
+    ```
+    const fs = require('fs')
+
+    ```
 - path
-- fs / buffer
+
 - http / https
 - event emitter (option - btvn tìm hiểu và viết demo buổi sau demo và thuyết trình)
 

@@ -23,28 +23,36 @@
 
     console.log('Node.js web server at port 5000 is running..')
     ```
-- fs
+- fs, path
     * The fs module of Node.js provides useful functions to interact with the file system
     ```
-    const fs = require('fs')
+
+    var fs = require('fs');
+    const path = require('path');
+    fs.readFile(path.resolve(__dirname, 'course.md'), 'utf8', (err, data) => {
+        console.log(err) ;
+        console.log(data)
+    })
+
 
     ```
-- path
 
-- http / https
 - event emitter (option - btvn tìm hiểu và viết demo buổi sau demo và thuyết trình)
 
 ### 2. Giới thiệu Express framework
 - Express có gì
 - có framework nào khác?
-    - khung chương trình
-    - cung cấp phương thức để viết chương trình
+    - cung cấp các phương thức để viết chương trình
+    - express cũng cấp: Routing, middleware, static file
 - Framework là gì? Mô hình MVC.
+    - Mô hình mcv là quy ước viết chương trình. Theo đó, các việc xử lý request, hiển thị dữ liệu , xử lý dữ liệu phải tách bạch ra theo quy định.
+    - M : model, xử lý các method liên quan đến dữ liệu
+    - V: View , giao diện người dùng
+    - C: controller xử lý logic app
 - Luồng chạy cơ bản của MVC vào Express
 
 ### 3. First Project with Express
 - Tạo dự án
-- Router Express 
-- Middleware là gì 
-- static file
+- Router Express và resfull
 - cấu trúc thư mục
+- => code mẫu trong express-first

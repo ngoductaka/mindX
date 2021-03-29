@@ -31,9 +31,9 @@
 #### 2.1 Tổng quan kiến trúc nodejs
 
 - Tổng quan server-client (backend - fontend): 
-    *  frontend là phần tương tác với người dùng là phần người dùng nhìn thấy và tương tác: giao diện web, app.
+    *  Frontend là phần tương tác với người dùng là phần người dùng nhìn thấy và tương tác: giao diện web, app.
 
-    * Back-end cũng là một phần mềm, có chức năng hồi đáp những yêu cầu từ Front-end .Thường xử lý lưu trữ dữ liệu và logic nghiệp vụ.
+    * Backend cũng là một phần mềm, có chức năng hồi đáp những yêu cầu từ Front-end .Thường xử lý lưu trữ dữ liệu và logic nghiệp vụ.
 
     * [# theo wiki](https://en.wikipedia.org/wiki/Front_end_and_back_end)
 
@@ -45,13 +45,14 @@
         1 + 1
     ```
     * [# JavaScript engine ?](https://www.youtube.com/watch?v=p-iiEDtpy6I
-) A JavaScript engine is a computer program that executes JavaScript (JS) code
+) A JavaScript engine is a computer program that executes JavaScript (JS) code ([#wiki](https://en.wikipedia.org/wiki/JavaScript_engine#:~:text=A%20JavaScript%20engine%20is%20a,every%20major%20browser%20has%20one.))
         * Tại sao là v8?
         * SpiderMonkey  <=> Firefox
         * Nitro <=> Safari
         * Chakra <=> Internet Explorer 
 
-    * Chốt:  ````JavaScript to run without browser → NodeJS ````
+
+    * => Chốt:  ````JavaScript to run without browser → NodeJS ````
     * [# kiến trúc](https://blog.usejournal.com/nodejs-architecture-concurrency-model-f71da5f53d1d
 )
     * [# Eventloop](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
@@ -74,10 +75,10 @@
     node index.js
     ```
 - NPM, module, export and require
-    - Module là gì ? 
-        * Core Modules
-        * Local Modules
-        * Third Party Modules
+    - Module là gì ? có bao nhiêu loại
+        * Core Modules (module của nodejs)
+        * Local Modules (module tự tạo )
+        * Third Party Modules (module người khác viết và đẩy lên npmjs.com )
     - npm là gì?
         * node package manger 
         * quản lý package của nodejs

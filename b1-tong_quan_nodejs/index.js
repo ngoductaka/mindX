@@ -9,4 +9,5 @@ fs.readFile(path.resolve(__dirname, 'course.md'), 'utf8', (err, data) => {
     console.log(err) ;
     console.log(data)
 })
+
 console.log(a+b);

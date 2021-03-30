@@ -1,17 +1,17 @@
-# Bài 3-4 - Express framework
+# Bài 3 Express - potman
 
 ## I. Mục tiêu
-
- *  Giới thiệu Express
- *  Khởi tạo và chạy dự án đầu tiên với Express
- *  Tìm hiểu các module cần thiết để chạy dự án
+ *  Thực hành Express (router và middleware)
+ *  Thực hành restFUL và test api với potman
 ------
 ## II. Nội dung bài học 
-### 1. Giới thiệu Express framework
-- Express có gì?
-- có framework nào khác?
-- Framework là gì? Mô hình MVC.
-- Luồng chạy cơ bản của MVC vào Express
+### 1. Basic Router Express
+- router: 
+    ```
+    app.METHOD(PATH, HANDLER)
+
+    ```
+- [http request](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
 ### 2. First Project with Express
 - Tạo dự án
 - Router Express 

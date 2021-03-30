@@ -6,27 +6,35 @@
 ------
 ## II. Nội dung bài học 
 ### 1. Basic Router Express
-- router: 
+- front end và backend giao tiếp vơi nhau như thế nào? [# link](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
+    - SSR: Server-Side Rendering - rendering a client-side or universal app to HTML on the server. => nodejs sử dụng HTML template để sử lý các logic hiển thị
+    - CSR: Client-Side Rendering - rendering an app in a browser, generally using the DOM. => sử dụng api để lấy dữ liệu từ api
+    - so sánh ? [# link](https://toidicodedao.com/2018/09/11/su-khac-biet-giua-server-side-rendering-va-client-side-rendering/)
+    - api là gì ? 
+        - An API is a set of programming code that enables data transmission between one software product and another. It also contains the terms of this data exchange.
+        - => API là các phương thức, giao thức kết nối với các thư viện và ứng dụng khác nhau.
+    - api thì có quy tắc chung để viết => RESTful
+    
+- Router express: 
     ```
+
     app.METHOD(PATH, HANDLER)
 
     ```
-- [http request](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
-### 2. First Project with Express
-- Tạo dự án
-- Router Express 
-- Middleware là gì 
-- static file
-- cấu trúc thư mục
+    - app is an instance of express.
+    - METHOD is an HTTP request method, in lowercase. [http request](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
+    - PATH is a path on the server.
+    - HANDLER is the function executed when the route is matched.
 
-- potman là gì - rest, rest full 
-### 3. Json và dữ liệu, database 
-- json là gì
-- dữ liệu là gì, vì sao cần database
-- giới thiệu mongoDB
+- thực thành => sang code express-b3
+### 2. Middleware express
+- Tiền sử lý hoặc hậu sử lý request
+- thực thành => sang code express-b3
+
+### 3. Làm quen vs postman để test
+- cài đặt và sử dụng postman
+- làm quen và sử dụng các phương thức get post put delete patch
 
 ## III bài tập 
-- tìm hiểu các framework nodejs
-- Cài đặt mongo (local - mlab)  https://mlab.com/
-- Cài robo3t
-- tự tạo dự án với express tạo cấu trúc thư mục 
+- thử và thực hành tất cả phương thức 
+- viết api tương ứng với các method

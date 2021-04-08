@@ -34,16 +34,18 @@
     *  Frontend là phần tương tác với người dùng là phần người dùng nhìn thấy và tương tác: giao diện web, app.
 
     * Backend cũng là một phần mềm, có chức năng hồi đáp những yêu cầu từ Front-end .Thường xử lý lưu trữ dữ liệu và logic nghiệp vụ.
+    * Các ngôn ngữ phổ biến ở BE: java (1995), C#, PHP (1995), Python, .NET (C#, VB), Go, RUST
 
     * [# theo wiki](https://en.wikipedia.org/wiki/Front_end_and_back_end)
 
 - Nodejs là gì? vì sao ra đời, khả năng nodejs 
-
+    * Trước khi nodejs ra đời js chạy chủ yếu trên browser (F12 trên browser để chạy thử) => ngôn ngữ cho client side sử lý event user. Không có khả năng thao tác phần cứng máy tính (Thao tác được với file, hệ thống hay cơ sở dữ liệu)
+        ```
+            1 + 1
+        ```
+    
     * [# nodejs?](https://nodejs.org/en/) Runtime environment built on Chrome's V8 JavaScript engine.
-    * Trước khi nodejs ra đời js chạy chủ yếu trên browser (F12 trên browser)
-    ```
-        1 + 1
-    ```
+    
     * [# JavaScript engine ?](https://www.youtube.com/watch?v=p-iiEDtpy6I
 ) A JavaScript engine is a computer program that executes JavaScript (JS) code ([#wiki](https://en.wikipedia.org/wiki/JavaScript_engine#:~:text=A%20JavaScript%20engine%20is%20a,every%20major%20browser%20has%20one.))
         * Tại sao là v8?
@@ -101,7 +103,13 @@
 ## III Tổng kết
 - nodejs là Runtime environment built on Chrome's V8 JavaScript engine.
     -  => là môi trường để viết js trên máy tính (máy server/ server side)
-    - => học sử dụng các module mà nodejs cung cấp để viết backeng (tác vụ server)
+    - => học sử dụng các module mà nodejs cung cấp để viết backend (tác vụ server)
 - Event loop của nodejs hoạt động ntn
     - cơ chế hoạt động của đơn luồng/ bất đồng bộ / non-bloking io
 - npm là gì và cách sử dụng, cấu trúc package.json
+
+## IV Bài tập về nhà
+- Trả lời và thảo luận vòng tròn các chủ đề: (20-30 phút đầu giờ)
+    - 1. Xem youtube, đọc tài liệu về event loop để thảo luận
+    - 2. có bao nhiêu kiểu dữ liệu căn bản của js, bao nhiêu cấu trúc dữ liệu căn bản của js
+    - 3. ES là gì ES6 là gì. Có gì đặc biệt trong ES6

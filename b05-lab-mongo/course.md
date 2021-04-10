@@ -35,7 +35,8 @@
     - 1. Login và jwt (bắt buộc)
     - 2. chức năng khác (tuỳ định hướng nhóm)
     - 3. các dự án mẫu 
-        - quản lý sách thư viện
-        - quản lý bán hàng
-        - quản lý nhân viên trong doanh nghiệp
+        - quản lý rạp chiếu phim đặt chỗ xem phim
+        - quản lý phim, phim sắp chiều, đang chiếu
+        - quản lý đặt lịch sân bóng
+        - quản lý danh sách 
 

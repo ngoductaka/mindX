@@ -17,3 +17,14 @@
 
 ## III bài tập 
 - Hoàn thiện kết nối mongoDB
+- thực hành thêm sửa xoá user
+
+## Bài tập về nhà
+- 1. this trong js là gì
+- 2. arrow function là gì
+- 3. thực thành thêm sửa xoá user tương tự như đã làm với fs và json file
+    *  Tạo mới danh sách user
+    * Tìm kiếm và trã về theo id
+    * Thêm mới user vào danh sách
+    * Chỉnh sửa user
+    * xoá 1 user khỏi danh sách

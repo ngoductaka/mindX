@@ -38,3 +38,13 @@
 ## III bài tập 
 - thử và thực hành tất cả phương thức 
 - viết api tương ứng với các method
+- dùng postman test các phương thức post put delete path
+- cài đặt và thử viết api dựa trên RESTful và dùng JSON file và fs để sử lý dữ liệu 
+    *  Tạo mới danh sách user
+    * Tìm kiếm và trã về theo id
+    * Thêm mới user vào danh sách
+    * Chỉnh sửa user
+    * xoá 1 user khỏi danh sách
+
+## bài tập về nhà 
+- 1. tìm hiểu class trong js

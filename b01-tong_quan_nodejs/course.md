@@ -60,7 +60,14 @@
     * [# Eventloop](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
     
 - Chạy thử nodejs 
-    - Command line interface (CLI) trên máy tính
+    - Command line interface (CLI) trên máy tính (RELP Terminal)
+        * Read − Reads user's input, parses the input into JavaScript data-structure, and stores in memory.
+
+        * Eval − Takes and evaluates the data structure.
+
+        * Print − Prints the result.
+
+        * Loop − Loops the above command until the user presses ctrl-c twice.
     ```
         # cmd / terminal
         node

@@ -9,7 +9,10 @@
 
 ## 1. nodejs module
 - http
-    * module provides an HTTP client/server implementation
+    * Giao thức mạng (Internet Protocol)? [#link ](https://www.totolink.vn/article/137-14-giao-thuc-mang-pho-bien-ma-ban-nen-biet.html)
+    * http là gì [#link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
+    * http method [#link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+    * module provides an HTTP client/server implementation, 
     ```
     var http = require('http'); // 1 - Import Node.js core module
 
@@ -68,5 +71,9 @@
     ```
 
 - Router Express và RESTful API [#RESTful](https://www.redhat.com/en/topics/api/what-is-a-rest-api)
+- [RESTful](https://www.restapitutorial.com/lessons/httpmethods.html#:~:text=The%20primary%20or%20most%2Dcommonly,or%20CRUD)%20operations%2C%20respectively.)
 - Cấu trúc thư mục (Phụ thuộc vào SA và dự án)
 - => code mẫu trong express-first
+
+## Bài tập về nhà
+- 1. chuẩn bị và thảo luận về callback - promise - async/await

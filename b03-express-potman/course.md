@@ -48,3 +48,5 @@
 
 ## bài tập về nhà 
 - 1. tìm hiểu class trong js
+
+- đăng ký và cài đặt mongoDB [#link](https://www.youtube.com/watch?v=KKyag6t98g8)

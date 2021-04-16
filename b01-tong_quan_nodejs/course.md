@@ -3,8 +3,8 @@
 ## I. Mục tiêu
 
  *  Giúp học viên nắm tổng quan chương trình học.
-
- * [Tổng quan nodejs, kiến trúc nodejs ...](###1._NodeJS)
+ *  Phương pháp học [#link](https://www.youtube.com/watch?v=DpvYHLUiZpc)
+ * Tổng quan nodejs, kiến trúc nodejs 
 ------
 ## II. Nội dung bài học 
 
@@ -113,7 +113,11 @@
     - => học sử dụng các module mà nodejs cung cấp để viết backend (tác vụ server)
 - Event loop của nodejs hoạt động ntn
     - cơ chế hoạt động của đơn luồng/ bất đồng bộ / non-bloking io
+
 - npm là gì và cách sử dụng, cấu trúc package.json
+- thử nghiêmj các loại module và khởi tạj dự án với npm
+
+
 
 ## IV Bài tập về nhà
 - Trả lời và thảo luận vòng tròn các chủ đề: (20-30 phút đầu giờ)

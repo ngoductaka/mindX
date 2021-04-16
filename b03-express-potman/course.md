@@ -35,6 +35,46 @@
 - cài đặt và sử dụng postman
 - làm quen và sử dụng các phương thức get post put delete patch
 
+- truyền dự liệu 
+    - đường dẫn 
+        - 1.
+        ```
+            app.get('/users/:userId/books/:bookId', function (req, res) {
+                res.send(req.params)
+            })
+        ```
+        - 2. 
+        ```
+        <!-- ?id=4&token=sdfa3&geo=us -->
+        // routes will go here
+        app.get('/api/users', function(req, res) {
+            var user_id = req.param('id');
+            var token = req.param('token');
+            var geo = req.param('geo');
+
+            res.send(user_id + ' ' + token + ' ' + geo);
+        });
+        ```
+
+    - body
+        ```
+        const express = require('express');
+        const bodyParser = require('body-parser');
+
+        const app = express();
+        app.use(bodyParser.urlencoded({ extended: true }));
+        // parse application/json
+        app.use(bodyParser.json())
+
+
+        app.post('/post-test', (req, res) => {
+            console.log('Got body:', req.body);
+            res.sendStatus(200);
+        });
+
+        app.listen(8080, () => console.log(`Started server at http://localhost:8080!`));
+        ```
+
 ## III bài tập 
 - thử và thực hành tất cả phương thức 
 - viết api tương ứng với các method

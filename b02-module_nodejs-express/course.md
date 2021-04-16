@@ -75,5 +75,10 @@
 - Cấu trúc thư mục (Phụ thuộc vào SA và dự án)
 - => code mẫu trong express-first
 
+## Tổng kết
+- http và http method
+- cài đặt và sử dụng express
+
+
 ## Bài tập về nhà
 - 1. chuẩn bị và thảo luận về callback - promise - async/await

@@ -1,4 +1,4 @@
-# Bài 8-9 Tổng ôn nodejs mongo  - chuẩn bị project
+# Bài 8 Tổng ôn nodejs mongo  - chuẩn bị project
 
 ## I. Mục tiêu
  *  Đảm bảo lớp cài đặt và kết nối nodejs-mongo

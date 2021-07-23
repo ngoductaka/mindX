@@ -10,9 +10,11 @@
  * Có thể hoàn toàn sử dụng html css và js ( hoặc các thư viện khác như jquery ...) để tạo 1 trang web hoàn thiện. Và đa số trang web tồn tại hiện nay vẫn dùng jquery
 - các thư viện khác (vuejs angular)
 
+- Khởi tạo dự án với create-react-app 
 ### 2. Khái niệm chính
 - DOM?
     * Document Object Modal
+    * VDOM
 - JSX ?
     * Javascript syntax extension
 - Props

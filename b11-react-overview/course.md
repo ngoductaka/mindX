@@ -14,20 +14,15 @@
 ### 2. Khái niệm chính
 - DOM?
     * Document Object Modal
-    * VDOM
+    * VDOM và thuật toán so sánh để tối ưu render
 - JSX ?
     * Javascript syntax extension
-- Props
+    * Sử dụng style property trong jsx
+- Component
     - Khái niệm
-    - Xử lý dữ liệu
-    - vì sao cần props
-- State 
-    - Cách quản lý
-    - vì sao cần state
-
-### 3. Create a New React App
-- create-react-app 
-- Chương trình đầu tiên
+    - ý tưởng về component
+    - props và state trong component
 
 ## III bài tập 
-- Làm Form login
+- khởi tạo dự án và test thử JSX
+- [#link bài giảng](https://dnd6795.blogspot.com/2021/07/b01-react.html)

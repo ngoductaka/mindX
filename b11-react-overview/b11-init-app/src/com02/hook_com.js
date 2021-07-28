@@ -6,6 +6,9 @@ export const HookCom = () => {
     // 
     useEffect(() => {
         console.log("clickCount_2", clickCount);
+        return () => {
+            console.log("clickCount_3", clickCount);
+        }
     }, [clickCount])
 
     useEffect(() => {
@@ -28,3 +31,5 @@ export const HookCom = () => {
         </div>
     )
 }
+
+//  Exam 

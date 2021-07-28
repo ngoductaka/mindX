@@ -29,7 +29,7 @@ function AppInit() {
 }
 
 // export default Props_input;
-// export default ClassCom;
-export default HookCom;
+export default ClassCom;
+// export default HookCom;
 // export default App;
 

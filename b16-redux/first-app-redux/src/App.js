@@ -69,3 +69,9 @@ function About() {
 function Users() {
   return <h2>Users</h2>;
 }
+
+{/* <BrowserRouter>
+  <Route exact path="/" component={Home}/>
+  <Route path="/about" component={About}/>
+  <Route path="/topics" component={Topics}/>
+</BrowserRouter> */}

@@ -105,7 +105,7 @@ export const HookCom = () => {
 
 - => State là trạng thái trong component, có phạm vi sử dụng trong component
 - => Trong Class component thì state chỉ tồn tại bên trong 1 component. Dù component lớn và phức tạp thì cũng chỉ 1 object state
-- => Hook ở react 16 cho phép chia nhỏ để quản lý và tái sử dụng logic của react (sẽ tìm hiểu cụ thể ở bài 13)
+- => Hook ở react 16 cho phép chia nhỏ để quản lý và tái sử dụng logic của react (sẽ tìm hiểu cụ thể ở bài sau)
 
 ### 3.Lifecycle
 * Là vòng đời của 1 component

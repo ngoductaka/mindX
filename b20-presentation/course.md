@@ -1,4 +1,4 @@
-# Bài 18-19 - Thực hành với project ( thời gian có thể từ 9-10)
+# Bài 20 Thực hành với project
 ## I. Mục tiêu
  * Thuyết trình về dự án 
  * Đánh giá chất lượng dự án

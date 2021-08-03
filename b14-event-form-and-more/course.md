@@ -249,11 +249,10 @@ const NameForm = () => {
 - => về các thuộc tính thì không khấc nhiều với html
 - => lưu ý về hàm onChange ở trên nhận vào là  synthetic event Và lấy giá trị từ người dùng nhập bằng : event.target.value
 
-
-
-
-
-
+## Bài tập 
+- làm form login
+- có thể tái sử dụng form
+- làm Survey Form: https://codepen.io/freeCodeCamp/full/VPaoNP
 
 
 

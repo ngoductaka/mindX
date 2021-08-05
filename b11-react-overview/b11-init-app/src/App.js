@@ -5,6 +5,7 @@ import { App as Props_input } from './com02/props_input';
 // b02 class state
 import ClassCom from './com02/class_com';
 import { HookCom } from './com02/hook_com';
+import { Temp, TemSplit } from './LiftUpState/liftUpState';
 
 
 function AppInit() {
@@ -30,6 +31,7 @@ function AppInit() {
 
 // export default Props_input;
 // export default ClassCom;
-export default HookCom;
-// export default App;
+// export default HookCom;
+// export default Temp;
+export default TemSplit;
 

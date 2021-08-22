@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
 
 function connect() {
-    const cc = 'mongodb+srv://huy-agv-dev:yg5zJKsPfiV5mOa8@cluster0.75nbn.mongodb.net/agv-db-dev?retryWrites=true&w=majority'
-    const dnd = `mongodb+srv://ngocduc:ngocduc@cluster0.ihxnv.mongodb.net/sample_mflix?retryWrites=true&w=majority`
+    // const cc = 'mongodb+srv://huy-agv-dev:yg5zJKsPfiV5mOa8@cluster0.75nbn.mongodb.net/agv-db-dev?retryWrites=true&w=majority'
+    // const dnd = `mongodb+srv://ngocduc:ngocduc@cluster0.ihxnv.mongodb.net/sample_mflix?retryWrites=true&w=majority`
+    const dnd = 'mongodb+srv://ngocduc:ngocduc@cluster0.ihxnv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
     // mongoose.connect(cc, { useNewUrlParser: true, useUnifiedTopology: true })
     mongoose.connect(dnd, { useNewUrlParser: true, useUnifiedTopology: true })
     // console.log(process.env.DB_HOST, '--')

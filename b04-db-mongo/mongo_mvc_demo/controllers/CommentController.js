@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const errorMessage = require('../config').errorMessage
 
 async function test(req, res) {
-    console.log('-=-=-')
     try {   
         const data = await Comments.find({}).limit(20)  
         console.log('ddd', data)

@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 // https://runkit.com/
-const port = 3000
+const port = 3000;
+// config static file
 app.use(express.static('anh'))
 
 app.get('/user/:id', (req, res) => {

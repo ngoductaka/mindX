@@ -48,11 +48,12 @@ const addNewPromise = async student => {
         if (!isExit) {
             const newList = [student];
             const dataToSave = JSON.stringify(newList)
-            await fs.promises.writeFile('student.json', dataToSave, "utf-8");
+            await fs.promises.writeFile('student.json', dataToSave);
+            return 1;
         }
         const data = await fs.promises.readFile('student.json', 'utf8');
 
-        const dataConvert = JSON.stringify(data);
+        const dataConvert = JSON.parse(data);
         const newList = [...dataConvert, student];
 
         await fs.promises.writeFile('student.json', JSON.stringify(newList));

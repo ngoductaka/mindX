@@ -1,7 +1,1 @@
-{
-    "name": "",
-    "age": 23,
-    "gender": "Female",
-    "department": "History",
-    "car": "Honda"
-}
+[{"name":"duc","age":26,"gender":"Male","department":"Math"},{"name":"duc","age":26,"gender":"Male","department":"Math"}]

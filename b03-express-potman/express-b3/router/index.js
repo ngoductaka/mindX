@@ -5,11 +5,13 @@ const userRouter = require('./user');
 const app = express();
 
 const middleware = (req, res, next) => {
-    console.log(req)
+    req.real_name = "vinh";
+    console.log('req')
     next();
 }
 // 
-app.use('/user', middleware, userRouter)
+app.use('/user', middleware, middleware, middleware, userRouter)
+// app.use('/product', middleware, userRouter)
 
 
 module.exports = app

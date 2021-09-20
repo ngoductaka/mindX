@@ -96,7 +96,6 @@ const updateByID = async (id, dataUpdate) => {
         const newData = data.map(i => {
             if (i.id === id) {
                 isExit = true;
-
                 return {
                     ...i,
                     ...dataUpdate,

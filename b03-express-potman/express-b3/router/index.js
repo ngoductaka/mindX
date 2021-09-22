@@ -10,7 +10,7 @@ const middleware = (req, res, next) => {
     next();
 }
 // 
-app.use('/user', middleware, middleware, middleware, userRouter)
+app.use('/user', userRouter)
 // app.use('/product', middleware, userRouter)
 
 

@@ -33,13 +33,14 @@ const private_key = 'Aasdfakdbehe345234523452345';
 const loginController = (body) => {
     const { user_name = '', password = '' } = body;
 
-    if (user_name == 'ngoc_duc' && password == 'Aa123456') {
+    if (user_name == 'ngoc_duc' && password == 'Aa123456') { // check tài khoản trong database
         var token = jwt.sign({ user_name }, private_key);
         return {
             status: 200,
             data: {
                 token,
-                user_name
+                user_name,
+                age: 12,
             }
         }
     } else {

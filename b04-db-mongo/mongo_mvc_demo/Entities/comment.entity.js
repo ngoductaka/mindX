@@ -12,7 +12,7 @@ const comments = new Schema({
     text: {
         type: String
     },
-})
+});
 
 const Comments = mongoose.model('Comments', comments)
 

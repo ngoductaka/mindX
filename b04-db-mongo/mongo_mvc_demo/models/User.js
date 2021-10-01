@@ -10,6 +10,7 @@ class User extends Base {
 
     async getUserByID(id) {
         const data = await Model.User.find({});
+        // const data = await Model.Manager.insertMany({name: 'duc2', role: 'admin', asdfadf: 'asfsdfasdfafd'});
         return data
     }
 

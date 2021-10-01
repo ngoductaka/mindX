@@ -14,6 +14,6 @@ app.use(bodyParser.json());
 
 connect();
 
-app.get('/', Router);
+app.use('/', Router);
 
 app.listen(POST, () => console.log("run with mongoo on post " + POST))

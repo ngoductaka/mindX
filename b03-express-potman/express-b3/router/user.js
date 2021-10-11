@@ -6,11 +6,11 @@ const controller = (req, res) => {
     res.send('get method' + req.params.user)
 }
 
-userRouter.get('/all/:user', (req, res) => {
+userRouter.get('/', (req, res) => {
     console.log(req.params, req.query) // ?name1=val&name2=sdaf&asdf
     const obj = req.query;
 
-    res.send('get method: ' + req.real_name)
+    res.send('get method get all user: ' )
 });
 
 userRouter.post('/:user', (req, res) => {

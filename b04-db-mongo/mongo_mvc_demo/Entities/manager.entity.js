@@ -2,18 +2,18 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const comments = new Schema({
+const manager = new Schema({
     name: {
         type: String
     },
     email: {
         type: String
     },
-    text: {
+    role: {
         type: String
     },
 });
 
-const Comments = mongoose.model('Comments', comments)
+const Manager = mongoose.model('Managers', manager)
 
-module.exports = Comments
+module.exports = Manager

@@ -10,10 +10,12 @@ class MiniCom extends React.Component {
   }
   componentDidMount() {
     console.log('Component DID MOUNT!');
+    this.props.dnd.value = 2
     setTimeout(() => {
-      this.setState({
-        state: 2,
-      })
+      this.props.dnd.value = 3
+    //   this.setState({
+    //     state: 2,
+    //   })
     }, 1000)
 
   }
@@ -25,9 +27,9 @@ class MiniCom extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     console.log('Component DID UPDATE!', { prevProps, prevState })
   }
-  // componentWillUnmount() {
-  //   console.log('Component WILL UNMOUNT!')
-  // }
+  componentWillUnmount() {
+    console.log('Component WILL UNMOUNT!')
+  }
 
   static getDerivedStateFromProps(props, state) {
     console.log("getDerivedStateFromProps", { props, state })
@@ -50,7 +52,9 @@ class MiniCom extends React.Component {
     return (
       <div>
         <h3 onClick={() => this.setState({ state: this.state.state + 1 })}>{'this.props.myNumber'}</h3>
-        <h3>{this.state.state}</h3>
+        {/* <h3>{this.state.state}</h3> */}
+        <h3>{this.props.dnd.value}</h3>
+
       </div>
     );
   }
@@ -62,7 +66,7 @@ const App = () => {
 
   return (
     <>
-      <button onClick={() => setShow}>switch</button>
+      <button onClick={() => setShow(!show)}>switch</button>
       {show ? <MiniCom dnd={{ value: 1 }} /> : null}
     </>
   )

@@ -3,10 +3,15 @@ import React from 'react';
 class ClassCom extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { date: new Date(), clickCount: 0 };
+        cons
+        this.state = {
+            date: new Date(),
+            clickCount: 0,
+        };
     }
     // life cycle?
     componentDidMount() {
+
         // this.timerID = setInterval(
         //     () => this.tick(),
         //     1000
@@ -14,7 +19,7 @@ class ClassCom extends React.Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.timerID);
+        // clearInterval(this.timerID);
     }
 
     tick() {
@@ -23,7 +28,8 @@ class ClassCom extends React.Component {
         });
     }
 
-    _handleClick = () => {
+    _handleClick = (e) => {
+        console.log('----e----', e)
         this.setState({
             clickCount: this.state.clickCount + 1
         }, () => {
@@ -48,11 +54,8 @@ class ClassCom extends React.Component {
             <div>
                 <h1>Hello, world!</h1>
                 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-                <h1>Click Count <button onClick={this._handleClick}>Click here</button></h1>
+                <h1>Click Count <button onClick={() => this._handleClick(1)}>Click here</button></h1>
                 <h2>{this.state.clickCount}</h2>
-                {this.state.clickCount & 1 ? <MiniCom 
-                // myNumber={this.state.clickCount}
-                 /> : null}
             </div>
         );
     }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export const HookCom = () => {
     const [date, setDate] = useState(new Date())
-    const [clickCount, setClickCount] = useState(0);
+    const [clickCount, setClickCount] = React.useState(0);
     // 
     useEffect(() => {
         // console.log("clickCount_2", clickCount);

@@ -1,74 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
-class MiniCom extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      state: 1
+
+const Select = () => {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const [msg, setMsg] = useState({});
+
+
+  const _handleSubmit = () => {
+
+    setMsg({});
+    if (!email) {
+      setMsg({
+        email: 'Email is required',
+      });
+      return 1;
     }
-    console.log('constructor');
+    if (!name) {
+      setMsg({
+        name: 'Name is required',
+      });
+      return 1;
+    }
+    if (!phone) {
+      setMsg({
+        phone: 'Phone is required',
+      });
+      return 1;
+    }
+    const isValidate = validateEmail(email);
+    if (!isValidate) {
+      setMsg({
+        email: 'Email is invalid',
+      });
+      return 1;
+    }
+
+    // call api
+    setMsg({
+      email: 'Email is in used',
+    });
+
+
+
+
+    // b1 validate from
   }
-  componentDidMount() {
-    console.log('Component DID MOUNT!');
-    this.props.dnd.value = 2
-    setTimeout(() => {
-      this.props.dnd.value = 3
-    //   this.setState({
-    //     state: 2,
-    //   })
-    }, 1000)
-
-  }
-  shouldComponentUpdate(newProps, newState) {
-    console.log('shouldComponentUpdate', { newProps, newState })
-
-    return true;
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.log('Component DID UPDATE!', { prevProps, prevState })
-  }
-  componentWillUnmount() {
-    console.log('Component WILL UNMOUNT!')
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    console.log("getDerivedStateFromProps", { props, state })
-    return { ...state };
-  }
-
-  // life cycle?
-  // componentWillMount() {
-  //     console.log('Component WILL MOUNT!')
-  // }
-  // componentWillReceiveProps(newProps) {
-  //     console.log('Component WILL RECIEVE PROPS!', { newProps })
-  // }
-  // componentWillUpdate(nextProps, nextState) {
-  //     console.log('Component WILL UPDATE!', { nextProps, nextState });
-  // }
-
-  render() {
-    console.log('Render')
-    return (
-      <div>
-        <h3 onClick={() => this.setState({ state: this.state.state + 1 })}>{'this.props.myNumber'}</h3>
-        {/* <h3>{this.state.state}</h3> */}
-        <h3>{this.props.dnd.value}</h3>
-
-      </div>
-    );
-  }
-}
-
-
-const App = () => {
-  const [show, setShow] = React.useState(true);
 
   return (
-    <>
-      <button onClick={() => setShow(!show)}>switch</button>
-      {show ? <MiniCom dnd={{ value: 1 }} /> : null}
-    </>
-  )
+    <div>
+      <p >
+        email: <input value={email} onChange={e => setEmail(e.target.value)} />
+      </p>
+      {(msg.email) ?
+        <p style={{ color: 'red' }}>{msg.email}</p> :
+        null}
+      <p >
+        name: <input value={name} onChange={e => setName(e.target.value)} />
+      </p>
+      {msg.name ? <p style={{ color: 'red' }}>{msg.name}</p> : null}
+      <p >
+        phone: <input value={phone} onChange={e => setPhone(e.target.value)} />
+      </p>
+      {msg.phone ? <p style={{ color: 'red' }}>{msg.phone}</p> : null}
+      <button onClick={_handleSubmit}>Submit</button>
+    </div>
+  );
+
 }
-export default App;
+
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+
+export default Select;

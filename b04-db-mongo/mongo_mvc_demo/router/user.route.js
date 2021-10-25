@@ -19,9 +19,17 @@ Router.get('/:userId', async (req, res) => {
 // tạo mới
 Router.post('/', async (req, res) => {
     try {
+        console.warn('***req===', req.body);
+        // check mail 
+        res.status(200).json({
+            code: 409,
+            data: {
+                email: 'email in used=======dndndd'
+            }
+        })
         const result = await Controller.User.createNewUser(req.body);
         console.log('result', result, req.body);
-        res.json(result);
+        res.json({msg: 'OK'});
     } catch (err) {
         res.status(500).json({
             msg: 'errors server'

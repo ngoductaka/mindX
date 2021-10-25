@@ -5,10 +5,13 @@ const {connect} = require('./config/dbConnect');
 const Router = require('./router');
 
 const express = require('express')
+var cors = require('cors')
+
 const app = express()
 
 const POST = process.env.POST || 5001
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

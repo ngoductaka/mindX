@@ -113,17 +113,6 @@ const updateByID = async (id, dataUpdate) => {
     }
 }
 
-const deleteByID = id => {
-    const data = await getAll();
-    const newData = data.filter(i => {
-        return i.id !== id;
-    });
-
-    if (newData.length == data.length) throw new Error("Không tìm thấy học sinh");
-    
-    await fs.promises.writeFile('student.json', JSON.stringify(newData));
-}
-
 const main = () => {
     const newStudent = {
         "name": "duc",

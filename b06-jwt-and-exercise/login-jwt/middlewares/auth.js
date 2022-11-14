@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 async function required(req, res, next) {
+    console.log('dddd')
     if (req.hasOwnProperty('headers') && req.headers.hasOwnProperty('authorization')) {
         try {
             let token = req.headers.authorization.split(" ")[1]

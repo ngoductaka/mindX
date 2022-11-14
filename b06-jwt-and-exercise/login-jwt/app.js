@@ -1,6 +1,10 @@
 require('dotenv').config();
 const express = require('express')
-const app = express()
+var cors = require('cors')
+var app = express()
+
+app.use(cors())
+
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,7 +21,7 @@ connect();
 
 // 3.4.1 Authentication:
 // POST /api/users/login
-app.get('/', CommentController.test);
+app.get('/',authen.required, CommentController.test);
 
 const POST = process.env.POST || 5001
 app.listen(POST, () => console.log("run with mongoo on post " + POST))

@@ -1,0 +1,50 @@
+Arguments: 
+  /Users/ducngoc/.nvm/versions/node/v14.18.1/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js start
+
+PATH: 
+  /Users/ducngoc/.nvm/versions/node/v14.18.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/ducngoc/.nvm/versions/node/v14.18.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/ducngoc/Library/Android/sdk/emulator:/Users/ducngoc/Library/Android/sdk/platform-tools:/Users/ducngoc/Library/Android/sdk/emulator:/Users/ducngoc/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  14.18.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Invariant Violation: Script must exist
+      at invariant (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:2318:15)
+      at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:61545:11
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:328:14
+      at new Promise (<anonymous>)
+      at new F (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:5305:28)
+      at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:307:12
+      at realRunCommand (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:61630:23)
+      at action.action (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:61691:16)
+
+npm manifest: 
+  {
+    "name": "express01",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": ""
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

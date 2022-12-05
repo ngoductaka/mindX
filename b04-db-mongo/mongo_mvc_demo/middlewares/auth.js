@@ -6,7 +6,11 @@ const User = require('../models/User');
 async function required(req, res, next) {
     if (req.hasOwnProperty('headers') && req.headers.hasOwnProperty('authorization')) {
         try {
-            let token = req.headers.authorization.split(" ")[1]
+
+            let token = req.headers.authorization.split(" ")[1];
+            
+            // token = "Bearer asdfasdf.asdfasdf.asdfasdf";
+
             const decoded = await jwt.verify(token, process.env.JWT_KEY);
             req.userId = decoded.id;//???????
             if (!req.userId) {

@@ -1,1 +1,7 @@
-[{"name":"mindx02","age":123,"pass":"ABC123","id":1669383838414},{"name":"mindx02","age":123,"pass":"ABC123","id":1669383907853}]
+[
+  { "name": "admin", "age": 123, "pass": "ABC123", "id": 1669383838414, "role": "admin" },
+  { "name": "dnd", "age": 123, "pass": "ABC123", "id": 16693838384 },
+  { "name": "dnd", "age": "33", "id": 1670243568720 },
+  { "name": "dnd", "age": "33", "id": 1670243604138 },
+  { "name": "dnd", "age": "33", "id": 1670243661866 }
+]

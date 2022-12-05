@@ -3,81 +3,87 @@ var bodyParser = require('body-parser')
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const KEY = "supper_secret_key"
 
- const readFilePromise = (path, endCode) => {
-    return new Promise((res, rej) => {
-        fs.readFile(path, endCode, (err, result) => {
-            if(err) rej(err);
-            res(result)
-        })
-    }) 
-}
+const { createUser, handleLogin, getAll, getOne } = require('./controller');
+const userRouter = express.Router();
 
-// const router = require('./router/index');
-// model.js
-const readAll = async () => {
+const validateToken = async (req, res, next) => {
     try {
-        const dataString = await readFilePromise('./user.json', 'utf8');
-        // console.log('dataString', dataString);
-        return JSON.parse(dataString)
-    } catch (err) {
-        return [];
-    }
-}
-const saveDataArray = dataSave => fs.promises.writeFile('./user.json', JSON.stringify(dataSave));
-
-// xử lý lưu trong db
-const createNewRecord = async (dataNewUser) => {
-    try {
-        const dataConvert = {
-            ...dataNewUser,
-            id: new Date().valueOf(),
+        const token = req?.query?.token;
+        console.log('01: token', token);
+        if (!token) {
+            res.status(401).json({
+                msg: 'missing token'
+            });
         };
-        //  đọc tất cả dữ liệu dang có
-        const allData = await readAll();
-        // insert dữ liệu mới vào data có sẵn
-        allData.push(dataConvert);
-        //  lưu dữ liệu mới 
-        await saveDataArray(allData);
 
-        return dataConvert
+        const dataDecoded = await jwt.verify(token, KEY);
+        console.log('02: dataDecoded', dataDecoded);
+        if (dataDecoded && dataDecoded.id) {
+            req.user = dataDecoded;
+            next();
+        } else {
+            res.status(401).json({
+                msg: 'Failed to authenticate token!'
+            });
+        }
     } catch (err) {
-        throw err;
+        res.status(401).json({
+            msg: 'Failed to authenticate token!'
+        });
     }
 };
-
-// controller.js
-const createUser = async (
-    req, // request object
-    res // response object 
-) => {
-    try {
-        // { params, query, body} = req 
-        // lấy data từ client (request)
-        const payload = req.body;
-        // xử lý yêu cầu từ client 
-        const result = await createNewRecord(payload);
-        // response 
-        res.json({
-            data: result
-        })
-    } catch (err) {
-        res.status(500).json({
-            data: err
-        })
+const isAdmin = async (req, res, next) => {
+    console.log('03: req.user', req.user);
+    if (req.user.role === 'admin') {
+        next();
+    } else {
+        res.status(401).json({
+            msg: 'permission deny!'
+        });
     }
 }
 
-// useRouter.js // cần tách folder 
-const userRouter = express.Router();
-userRouter.post(
+const logging = (req, res, next) => {
+    console.log('url', req.url);
+    console.log('user', req.user.name);
+    next();
+};
+
+// 01 api register
+userRouter.get(
     '/', // dduowngf danx
     createUser // cal back xu lys
 );
-// get post patch put delete
-// 
+
+// api 03 get all
+userRouter.get(
+    '/all', // dduowngf danx
+    // middleware
+    // midd 01
+    validateToken,
+    // midd 02
+    isAdmin,
+    // controller
+    getAll // cal back xu lys
+);
+
+userRouter.get(
+    '/one', // dduowngf danx
+    // middleware
+    // midd 01
+    validateToken,
+    logging,
+    // midd 02
+    // controller
+    getOne // cal back xu lys
+);
 app.use('/user', userRouter);
+// api 02
+app.get('/login', handleLogin);
+
 
 app.listen(3000, () => {
     console.log(`Example app listening at http://localhost:${3000}`)
@@ -89,7 +95,7 @@ app.listen(3000, () => {
 
 // 6 api theo mô hinh MVC RestFul
 
-// 1. C (create) => ko cần token (jwt) // method post 
+// 1. C (create sign in tạo mới user fb  ) => ko cần token (jwt) // method post 
 
 // 2. R (read all) => cần token với role admin // GET
 // 3. R (read one) => cần token của user hiện tại (id trong token giống với id của user) // GET

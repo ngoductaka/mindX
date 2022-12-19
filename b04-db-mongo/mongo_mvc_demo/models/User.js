@@ -16,6 +16,18 @@ function getUser(id = null) {
 
     return userById;
 }
+function getAllUser(id = null) {
+    let userById = new Promise((res, rej) => {
+        Users.find({})
+            .select('email username bio image')
+            .exec((err, data) => {
+                if (err) rej(err)
+                res(data)
+            })
+    })
+
+    return userById;
+}
 
 function login(data) {
     let query = { "email": data.email, "password": data.password };
@@ -76,4 +88,4 @@ function register({ email, username, image, password, bio }) {
     return createUser;
 };
 
-module.exports = { getUser, register, login, editUser }
+module.exports = { getUser, register, login, editUser, getAllUser }

@@ -43,6 +43,16 @@ async function getUser(req, res) {
         res.status(402).json(errorMessage(["err in GETUSER ", err]))
     }
 }
+async function getAllUser(req, res) {
+    try{
+        let user = await modelUser.getAllUser()
+        res.json({ user })
+    }
+    catch(err){
+        console.log('err', err)
+        res.status(402).json(errorMessage(["err in GETUSER ", err]))
+    }
+}
 
 async function updateUser(req, res) {
     try{
@@ -55,4 +65,4 @@ async function updateUser(req, res) {
     }
 }
 
-module.exports = { getUser, login, register, updateUser }
+module.exports = { getUser, login, register, updateUser, getAllUser }

@@ -37,14 +37,6 @@ const createNewRecord = async (dataNewUser) => {
             id: new Date().valueOf(),
         };
 
-        console.log('dataConvert:', dataConvert);
-        // data user mới log
-        // dataConvert = {
-        //     name: 'ngoc duc',
-        //     age: 22,
-        //     id: new Date().valueOf(),
-        // };
-
         //  đọc tất cả dữ liệu dang có
         const allData = await readAll();
         // insert dữ liệu mới vào data có sẵn

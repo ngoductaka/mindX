@@ -1,3 +1,9 @@
+// 
 const add = (a, b) => a + b;
+// nodejs (2009) module.exports
 
-module.exports = add;
+// import export  => es6 (2015)
+
+module.exports = {
+    add,
+};

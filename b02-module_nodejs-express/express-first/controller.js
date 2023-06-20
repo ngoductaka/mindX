@@ -10,8 +10,7 @@ const createUser = async (
     try {
         // { params, query, body} = req 
         // lấy data từ client (request)
-        const payload = req.query;
-        console.log('payload:', payload);
+        const payload = req.body;
         // xử lý yêu cầu từ client 
         // gọi đến controller 
         const result = await createNewRecord(payload);
@@ -32,7 +31,7 @@ const handleLogin = async (req, res) => {
 
         // { params, query, body} = req 
 
-        const payload = req.query;
+        const payload = req.body;
 
         if (!payload.name) {
             res.status(404).json({

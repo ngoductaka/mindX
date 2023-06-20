@@ -1,6 +1,28 @@
+// require 
+// fs tên module 
+// module
+
+// 1. local module 
+// const add = (a, b) => a + b;
+
+// . => folder hien tai 
+// .. => folder cha
+// 
+const add = require('./add.js')
+
+const data = add(1, 3);
+
+
+// 2. native module  ex: fs, http 
+var fs = require('fs');
+
+// 3. npm module 
+const _ = require('lodash');
 // 
 
-// var fs = require('fs');
+console.log('hi hi', _.add(1, 2));
+
+
 // const path = require('path');
 
 // const a = 2;
@@ -14,8 +36,8 @@
 
 // console.log(a+b);
 
-const add = require('./add');
+// const add = require('./add');
 
-const result = add(2, 4);
+// const result = add(2, 4);
 
-console.log('result', result);
+// console.log('result', result);

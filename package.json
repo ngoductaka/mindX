@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "joi": "^17.9.2"
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.0"
   }
 }

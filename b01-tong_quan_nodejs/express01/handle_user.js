@@ -70,6 +70,12 @@ const deleteUser = async (userId) => {
     }
 }
 
+
+const handleLogin = async ({ username, password }) => {
+    const allUser = await readAllUser();
+    return allUser.find(i => i.username === username && i.password === password)
+}
 module.exports = {
     readAllUser, getUserById, createUser, updateUser, deleteUser,
+    handleLogin,
 }

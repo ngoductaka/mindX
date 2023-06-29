@@ -1,11 +1,19 @@
 
 const express = require('express')
+const path = require('path')
 var bodyParser = require('body-parser')
+
+const privateKey = 'asdfkasbdfjhasvdfjhasvdfjasdf';
+
+var jwt = require('jsonwebtoken');
+
 const userHandle = require('./handle_user');
 var cors = require('cors'); // 
-const { validate, createUserSchema, middlewareValidate } = require('./validate');
+const { userCreateValidate, loginSchema, middlewareValidate } = require('./validate');
 
 var app = express()
+// static file 
+app.use(express.static('static'));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -15,7 +23,21 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
-
+const authMiddleware = (req, res, next) => {
+    try {
+        console.log(req.headers.authorization)
+        const [_, token] = req.headers.authorization.split(" ")
+        const userData = jwt.verify(token, privateKey);
+        console.log('userData', userData);
+        req.user = userData;
+        next();
+    } catch (err) {
+        res.status(401).json({
+            msg: 'invalid token',
+            err: err
+        })
+    }
+};
 // http 
 
 // 1. đường dẫn 
@@ -56,7 +78,16 @@ userRouter.get(
         const data = await userHandle.readAllUser();
         res.status(200).json(data);
     }, // cb xử lý req và res từ client theo đường dẫn 
-
+)
+// get current user
+userRouter.get(
+    '/current', // đường dẫn
+    authMiddleware,
+    // 
+    async (req, res) => {
+        const data = await userHandle.getUserById(req.user.id);
+        res.status(200).json(data);
+    }, // cb xử lý req và res từ client theo đường dẫn 
 )
 
 // Read user by id
@@ -75,8 +106,29 @@ userRouter.get(
 )
 // create user
 userRouter.post('/',
-    middlewareValidate(createUserSchema),
+    // middlewareValidate(createUserSchema),
+    (req, res, next) => {
+        // logic định danh user 
+        req.user = {
+            data: 'data',
+        }
+        next();
+    },
+    userCreateValidate,
+    // (
+    //     req, // object chứa thông tin từ client 
+    //     res, // obj chứa chức năng phản hồi từ server về client
+    //     next, // function gọi để chuyển logic sang cb sau đó 
+    // ) => {
+    //     const { error } = createUserSchema.validate(req.body);
+    //     if (error) {
+    //         res.status(400).json(error.details)
+    //     }
+    //     // req đúng quy cách format 
+    //     next();
+    // },
     async (req, res) => {
+        console.log('user info: ', req.user);
         const newDataUser = req.body;
         await userHandle.createUser(newDataUser);
         res.status(200).send('Create user success');
@@ -101,10 +153,35 @@ userRouter.delete('/:userId', async (req, res) => {
 
 router.use('/user', userRouter)
 
-app.use('/', router); // tổng
+router.post('/login',
+    middlewareValidate(loginSchema),
+    async (req, res) => {
+        const user = await userHandle.handleLogin(req.body);
+        if (user) {
+            var token = jwt.sign(user, privateKey);
+            res.json({
+                token,
+            })
+            return 1;
+        }
+        res.status(404).send({
+            msg: 'user not found',
+        })
+    })
 
-app.listen(3001, () => {
-    console.log('app run on port 3001')
+// router.use('/file', (req, res)=> {
+//     res.sendFile(path.resolve(__dirname, 'index1.html'))
+// })
+// router.use('/dnd.jpeg', (req, res)=> {
+//     res.sendFile(path.resolve(__dirname, 'dnd.jpeg'))
+// })
+
+
+
+app.use('/', router); // tổng
+const PORT = 3001;
+app.listen(PORT, () => {
+    console.log('app run on port ' + PORT)
 })
 
 
@@ -132,3 +209,9 @@ app.listen(3001, () => {
 // put => update ( thay thế toàn bộ dữ liêu)
 // path => update ( update 1 hoặc nhiều trường dữ liệu)
 // delete => xoá dữ liệu 
+
+
+// 1 . có phải user của hệ thống hay không || => 
+// 2. đó là user nào || => 
+
+// JWT 

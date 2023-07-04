@@ -32,10 +32,25 @@ const StudentSchema = new Schema({
     email: String,
     note: String,
     birthDay: { type: Date, default: null },
+}, {
+    timestamps: true,
 });
 
-
+// ORM
 const Student = mongoose.model('Student', StudentSchema);
+const commentSchema = new Schema({
+    content: {
+        type: String,
+        required: true
+    }, // String is shorthand for {type: String}
+    authorize: Number,
+    note: String,
+}, {
+    timestamps: true,
+});
+
+// ORM
+const Comment = mongoose.model('Comment', commentSchema);
 
 // mongodb handle logic
 const createUser = async (req, res) => {
@@ -70,14 +85,25 @@ const deleteUserById = async (req, res) => {
     }
 };
 
+// 
+const handleComment = (req, res) => {
+    Comment.create(req.body)
+        .then(() => {
+            res.send("create comment success")
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+}
+
 // router
 app.post('/user', createUser)
 app.get('/user', getAllUser)
 app.get('/user/:userId', getUserById)
 app.patch('/user/:userId', updateUser)
 app.delete('/user/:userId', deleteUserById)
-
 // 
+app.post('/comment', handleComment)
 
 const PORT = 3001;
 app.listen(PORT, () => {

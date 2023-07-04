@@ -18,7 +18,7 @@ app.use(cors())
 // code logic
 
 // mongodb connect
-mongoose.connect('mongodb+srv://ngocduc:ngocduc@cluster0.6shagew.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://ngocduc:ngocduc@cluster0.6shagew.mongodb.net/mindx?retryWrites=true&w=majority');
 
 // mongodb config
 // 7 primary value 
@@ -32,18 +32,25 @@ const StudentSchema = new Schema({
     email: String,
     note: String,
     birthDay: { type: Date, default: null },
+    comment: [{
+        type: mongoose.ObjectId,
+        ref: 'comment'
+    }],
 }, {
     timestamps: true,
 });
 
 // ORM
-const Student = mongoose.model('Student', StudentSchema);
+const Student = mongoose.model('User', StudentSchema);
 const commentSchema = new Schema({
     content: {
         type: String,
         required: true
     }, // String is shorthand for {type: String}
-    authorize: Number,
+    // authorize: {
+    //     type: mongoose.ObjectId,
+    //     ref: 'Student'
+    // },
     note: String,
 }, {
     timestamps: true,
@@ -67,7 +74,7 @@ const getAllUser = async (req, res) => {
 };
 
 const getUserById = async (req, res) => {
-    const userFounded = await Student.findOne({ _id: req.params.userId });
+    const userFounded = await Student.findOne({ age: { $gt: 30 } });
     res.json(userFounded);
 };
 
@@ -96,6 +103,15 @@ const handleComment = (req, res) => {
         })
 }
 
+const getAllComment = (req, res) => {
+    Comment.find({}).populate('authorize').then((result) => {
+        res.json(result)
+    })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+}
+
 // router
 app.post('/user', createUser)
 app.get('/user', getAllUser)
@@ -104,6 +120,7 @@ app.patch('/user/:userId', updateUser)
 app.delete('/user/:userId', deleteUserById)
 // 
 app.post('/comment', handleComment)
+app.get('/comment', getAllComment)
 
 const PORT = 3001;
 app.listen(PORT, () => {

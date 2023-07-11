@@ -1,21 +1,30 @@
 const privateKey = 'asdfkasbdfjhasvdfjhasvdfjasdf';
 
 var jwt = require('jsonwebtoken');
+const moment = require('moment');
 
 const UserModel = require('../models/user.model');
 const handlePassword = require('../helpers/handle_password');
 const userModel = require('../models/user.model');
 
 const createUser = async (req, res) => {
-    const { password, ...rest } = req.body;
-    const hashPassword = await handlePassword.cryptPassword(password);
-    const user = await UserModel.create({
-        ...rest,
-        password: hashPassword
-    });
-    res.status(201).json({
-        message: 'User created successfully',
-    });
+    try {
+        const { password, ...rest } = req.body;
+        const hashPassword = await handlePassword.cryptPassword(password);
+        const user = await UserModel.create({
+            ...rest,
+            password: hashPassword
+        });
+        res.status(201).json({
+            message: 'User created successfully',
+        });
+    } catch (error) {
+        console.log(error, 'error')
+        res.status(500).json({
+            message: 'Internal server error',
+            data: error.message
+        })
+    }
 }
 const login = async (req, res) => {
     try {
@@ -55,8 +64,32 @@ const getCurrentUser = async (req, res) => {
     res.status(200).json(user)
 }
 
+
+const updateUser = async (req, res) => {
+    const dataUpdate = {
+        ...req.body,
+        birthday: moment(req.body.birthday, "DD/MM/YYYY")
+    }
+    await userModel.findOneAndUpdate({ _id: req.user._id }, dataUpdate);
+    const data = await UserModel.findOne({ _id: req.user._id }, '-password -__v');
+    res.status(200).json(data)
+}
+const deleteUser = async (req, res) => {
+    const result = await userModel.delete({ _id: req.user._id });
+    res.json(result)
+}
+
+const getUsers = async (req, res) => {
+    const result = await UserModel.query(req.query);
+    res.json(result)
+}
+
+
 module.exports = {
     createUser,
     login,
-    getCurrentUser
+    getCurrentUser,
+    updateUser,
+    deleteUser,
+    getUsers,
 }

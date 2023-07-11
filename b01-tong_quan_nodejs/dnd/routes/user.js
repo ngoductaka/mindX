@@ -2,17 +2,20 @@
 const express = require('express');
 const { userController } = require('../controller');
 const { authMiddleware } = require('../middleware/auth');
+const { middlewareValidate, updateUserSchema } = require('../middleware/validate');
 
 const userRouter = express.Router();
 
 userRouter.post('/', userController.createUser);
-// userRouter.get('/', userController.getUsers); find user 
+userRouter.get('/', userController.getUsers);
 userRouter.get('/current',
-    
     userController.getCurrentUser
 );
-userRouter.patch('/',);
-userRouter.delete('/',);
+userRouter.patch('/',
+    middlewareValidate(updateUserSchema),
+    userController.updateUser
+);
+userRouter.delete('/', userController.deleteUser);
 
 module.exports = userRouter;
 // be

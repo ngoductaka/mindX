@@ -8,5 +8,6 @@ const { authMiddleware } = require('../middleware/auth');
 const router = express.Router();
 router.use('/user', authMiddleware, userRouter);
 router.post('/login', userController.login);
+router.post('/register', userController.createUser);
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import axios from 'axios';
 export const Temp = () => {
 	const [c, setC] = useState('');
 	const [f, setF] = useState('');
@@ -61,9 +61,21 @@ export const TemSplit = () => {
 
 	}
 
+	const [name, setName] = useState('');
+	const [password, setPassword] = useState('');
+	const [data, setData] = useState({});
+	const _handleLogin = async () => {
+		console.log(name, password)
+		const data = await axios.post('http://localhost:3000/login', {
+			name: name,
+			password: password
+		})
+		setData(data.data)
+	}
+
 	return (
 		<div>
-			<InputForm
+			{/* <InputForm
 				label="Độ C:"
 				value={c}
 				onChange={val => _handleChangeVal('c', val)}
@@ -72,7 +84,16 @@ export const TemSplit = () => {
 				label="Độ F:"
 				value={f}
 				onChange={val => _handleChangeVal('f', val)}
-			/>
+			/> */}
+			<span>name</span>
+			<input value={name} onChange={e => setName(e.target.value)} />
+			<span>password</span>
+			<input value={password} onChange={e => setPassword(e.target.value)} />
+			<div/>
+			<button onClick={_handleLogin}>Login</button>
+			<div>
+				{data.token}
+			</div>
 		</div>
 	)
 

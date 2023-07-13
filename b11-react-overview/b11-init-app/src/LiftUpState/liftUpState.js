@@ -64,6 +64,7 @@ export const TemSplit = () => {
 	const [name, setName] = useState('');
 	const [password, setPassword] = useState('');
 	const [data, setData] = useState({});
+	const [img, setFileResult] = useState('');
 	const _handleLogin = async () => {
 		console.log(name, password)
 		const data = await axios.post('http://localhost:3000/login', {
@@ -71,6 +72,30 @@ export const TemSplit = () => {
 			password: password
 		})
 		setData(data.data)
+	}
+
+	const onFileChange = (event) => {
+		const file = event.target.files[0];
+		const formData = new FormData();
+		formData.append(
+			"avatar",
+			file,
+			file.name
+		);
+		formData.append(
+			"name",
+			'dnd-nodejs'
+		);
+		axios.post('http://localhost:3000/upload/djdjdjd34343', formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
+			.then(res => {
+				console.log(res, 'dddddd')
+				setFileResult(`http://localhost:3000/${res?.data?.filename}`)
+			})
+
 	}
 
 	return (
@@ -85,14 +110,15 @@ export const TemSplit = () => {
 				value={f}
 				onChange={val => _handleChangeVal('f', val)}
 			/> */}
-			<span>name</span>
+			{/* <span>name</span>
 			<input value={name} onChange={e => setName(e.target.value)} />
 			<span>password</span>
 			<input value={password} onChange={e => setPassword(e.target.value)} />
-			<div/>
+			<div/> */}
+			<input type='file' onChange={onFileChange} />
 			<button onClick={_handleLogin}>Login</button>
 			<div>
-				{data.token}
+				<img src={img} />
 			</div>
 		</div>
 	)

@@ -11,6 +11,10 @@ const createUser = async (req, res) => {
     try {
         const { password, ...rest } = req.body;
         const hashPassword = await handlePassword.cryptPassword(password);
+        console.log({
+            ...rest,
+            password: hashPassword
+        }, 'ddddd')
         const user = await UserModel.create({
             ...rest,
             password: hashPassword

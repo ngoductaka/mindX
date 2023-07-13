@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // config body-parser (parse body) req.body
-// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(bodyParser.json())
+app.use(bodyParser.json())
 
 // config cors 
 app.use(cors())

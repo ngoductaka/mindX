@@ -51,3 +51,7 @@ app.listen(port, function () {
 //  -  update profile (update avatar + api upload ảnh) 
 //  -  delete profile
 //  -  
+
+
+// CRUD
+// => create, Read, Update, Delete

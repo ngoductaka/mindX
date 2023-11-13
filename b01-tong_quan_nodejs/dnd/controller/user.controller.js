@@ -52,7 +52,13 @@ const login = async (req, res) => {
         )
         res.status(200).json({
             message: 'User logged in successfully',
-            token
+            token,
+            user: {
+                name: user.name,
+                // birthday: user.birthday,
+                role: user.role,
+                phone: user.phone,
+            }
         })
     } catch (error) {
         console.log(error, 'error')
@@ -72,7 +78,7 @@ const getCurrentUser = async (req, res) => {
 const updateUser = async (req, res) => {
     const dataUpdate = {
         ...req.body,
-        birthday: moment(req.body.birthday, "DD/MM/YYYY")
+        // birthday: moment(req.body.birthday, "DD/MM/YYYY")
     }
     await userModel.findOneAndUpdate({ _id: req.user._id }, dataUpdate);
     const data = await UserModel.findOne({ _id: req.user._id }, '-password -__v');

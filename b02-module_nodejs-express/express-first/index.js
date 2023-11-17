@@ -1,7 +1,7 @@
 const express = require('express')
 var bodyParser = require('body-parser')
 const path = require('path');
-
+var XLSX = require('xlsx');
 
 const multer = require('multer')
 const app = express();
@@ -111,13 +111,30 @@ const upload = multer({
     storage: storage,
     limits: { fieldSize: 25 * 1024 * 1024 }
 })
+var storage1 = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads");
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "-" + file.originalname);
+    },
+});
 
+const uploadDnd = multer({ storage: storage1 });
+// dnd000
+app.post('/upload', uploadDnd.single("file"), (req, res) => {
+    let path = req.file.path;
+    var workbook = XLSX.readFile(path);
+    var sheet_name_list = workbook.SheetNames;
+    let jsonData = XLSX.utils.sheet_to_json(
+        workbook.Sheets[sheet_name_list[0]]
+    );
+    return res.status(400).json({
+        success: false,
+        message: "xml sheet has no data",
+        jsonData
+    });
 
-app.post('/upload', (req, res, next) => {
-    console.log('dddddd', req.body)
-    next();
-}, upload.single('img'), (req, res) => {
-    res.json(req.file)
 })
 
 

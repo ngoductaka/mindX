@@ -1,0 +1,7 @@
+deviceType,ipAddress,port,userName,password,model,metabotId,dockerName,processCommand,,
+IOT,adamproxy.komiapp.com,80,root,0000000,ADAM-6060,,,,Value of Device Type,AMR
+IOT,wiseproxy.komiapp.com,80,root,0000000,WISE-4050,,,,,FLEET
+CAMERA,mobotixproxy.komiapp.com ,80,admin,demorack,Mobotix-C26,,,,,IOT
+KM_SOFTWARE,192.168.0.74,4900,admin,admin,,,123fdg,,,CAMERA
+,,,,,,,,,,ACR
+,,,,,,,,,,KM_SOFTWARE

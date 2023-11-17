@@ -1,5 +1,6 @@
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 
 http.createServer(function (req, res) {
 
@@ -20,10 +21,22 @@ http.createServer(function (req, res) {
             res.write(data);
             return res.end();
         })
-    } else {
+    } else if (req.url === '/404') {
         res.writeHead(404, { 'Content-Type': 'text/html' });
         res.write('<h1 style="color: red">404 not found</h1>');
         return res.end();
+    } else {
+        var filePath = path.join(__dirname, 'dnd.jpeg');
+        var stat = fs.statSync(filePath);
+
+        res.writeHead(200, {
+            'Content-Type': 'image/png',
+            'Content-Length': stat.size
+        });
+        var readStream = fs.createReadStream(filePath);
+        // We replaced all the event handlers with a simple call to readStream.pipe()
+        readStream.pipe(res);
+
     }
 
 }).listen(8080);

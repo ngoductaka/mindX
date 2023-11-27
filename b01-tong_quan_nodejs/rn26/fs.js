@@ -40,7 +40,7 @@ const readAll = async () => {
         );
         return JSON.parse(data);
     } catch (err) {
-        console.log(err);
+        console.log('readAll', err);
     };
 }
 const writeData = (data) => {
@@ -92,9 +92,34 @@ const updateUser = async (userId, dataUpdate) => {
     await writeData(newData);
 };
 
-const main = () => {
-    // const data = await readAll();
-    // console.log('data return:', data);
+const deleteUser = async (userId) => {
+    // b1 get all data
+    const oldData = await readAll();
+    // b2 delete
+    // c1
+    // const newData = oldData.filter(user => user.id !== userId);
+    // newData là array mới dựa trên oldData
+    // c2
+
+    const index = oldData.findIndex(user => user.id === userId);
+    // 
+    console.log('index', index)
+    if(index !== -1) {
+        oldData.splice(index, 1);
+        // splice tác động đến array ban đầu
+
+        // b3 save
+        await writeData(oldData);
+    }
+}
+
+const main = async () => {
+    const data = await readAll();
+    console.log('data return:', data);
+    await deleteUser(2);
+    const dataAfterDelete = await readAll();
+    console.log('dataAfterDelete return:', dataAfterDelete);
+
     // readAllPromise()// promise hell
     //     .then(data => {
     //         console.log('readAll', data);
@@ -124,5 +149,8 @@ const main = () => {
 // delete (filter splice)
 main();
 // // 
-// // CRUD list user 
-// // => create, read, update, delete
+// CRUD list user 
+// => create, read,update 
+// => delete => btvn
+// check btvn 
+// 

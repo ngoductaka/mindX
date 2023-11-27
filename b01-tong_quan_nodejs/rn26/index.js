@@ -1,28 +1,53 @@
-// module 
-// 1 native module  (fs, http, os, path, ...) module được nodejs cung cấp sẵn.
-// var os = require('os');
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 
-// console.log("Platform: " + os.platform());
-// console.log("Architecture: " + os.arch());
-// console.log("cpus: " + JSON.stringify(os.cpus()[0]));
-// console.log(os.totalmem());
-// console.log(os.freemem())
+// khởi tạo 1 app (instance của express)
+const app = express();
+cors(app);
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
-// 2 local module (module tự tạo) local module được tạo ra bởi chính người dùng.
-const { add } = require('./add'); // đường dẫn tương đối đến file 
+// parse application/json
+app.use(bodyParser.json())
 
-const result = add(1, 1);
-const result1 = add(13, 1);
-console.log('result:', result, result1);
+// phân tách request 
+// 1. url // path (đường dẫn ) địa chỉ trên trình duyệt
+// eg: https://en.wikipedia.org/wiki/HTTP ( domain: en.wikipedia.org, path: /wiki/HTTP)
+// 2. method // phương thức (get, post, put, patch, delete) RESTful API
+// 3. data gửi kèm: params, query, body // nội dung
 
-// import, export => es6 (2015)
-// 2007 => require and module.exports
+// method: get
+// url: /wiki
+// data gửi kèm: params, query, body
+// query: http://localhost:3000/wiki?name=rn26&age=33 => ?name=rn26&age=33
+//  key and value (key=value)
+app.get(
+    '/wiki/:userId', // path
+    (req, res) => {
+        // data gửi kèm: params, query, body(body-parser) lấy từ req 
+        // query, param : dữ liệu trên đường dẫn
+        const query = req.query;
+        const params = req.params;
+        // value => string
+        console.log('params and query:', { params, query });
 
-// 3 third party module (express, body-parser, ...)
-// npm:  node package manager
-// 
-var _ = require('lodash');
+        res.send('<h2 style="font-size: 30px; color: blue">hello wiki</h2>');
+        // res.status(400).send('hello wiki');
+    });
 
-// const result = _.add(1, 1);
-// const result1 = _.add(13, 1);
-// console.log('result:', result, result1);
+app.post('/user', (req, res) => {
+    const body = req.body;
+    console.log('body:', body);
+    res.json(body);
+
+    // res.send('<h2 style="font-size: 30px; color: blue">hello wiki</h2>');
+});
+
+app.put('/user', (req, res) => { });
+app.patch('/user', (req, res) => { });
+app.delete('/user', (req, res) => { });
+
+app.listen(3000, () => {
+    console.log(`Example app listening on: ${3000}`)
+})

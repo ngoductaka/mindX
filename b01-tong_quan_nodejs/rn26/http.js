@@ -2,7 +2,10 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path');
 
-http.createServer(function (req, res) {
+http.createServer(function (
+    req,  // obj chứa thông tin request của client (chorme) mobile // url, method, header, body, params, query, ...
+    res  // obj chứa thông tin response của server
+    ) {
 
     // req: chứa thông tin request của client (chorme) mobile 
 
@@ -51,3 +54,5 @@ http.createServer(function (req, res) {
 //    put
 //    patch
 //    delete
+
+// express + middleware

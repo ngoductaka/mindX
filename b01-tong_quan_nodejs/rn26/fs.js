@@ -147,10 +147,17 @@ const main = async () => {
     // })
 };
 // delete (filter splice)
-main();
+// main();
 // // 
 // CRUD list user 
 // => create, read,update 
 // => delete => btvn
 // check btvn 
 // 
+// CURD
+module.exports = {
+    readAll, 
+    createNewUser,
+    updateUser,
+    deleteUser,
+}

@@ -1,12 +1,8 @@
 [
     {
-        "name": "rn26",
-        "age": 33,
+        "username": "rn26",
+        "password": "abc@123",
+        "age": 30,
         "id": 3
-    },
-    {
-        "name": "rn26",
-        "age": 33,
-        "id": 1
     }
 ]

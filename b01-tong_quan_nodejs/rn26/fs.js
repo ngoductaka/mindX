@@ -68,23 +68,20 @@ const updateUser = async (userId, dataUpdate) => {
                 ...user,
                 ...dataUpdate
             }
+        }
+        return user;
+    });
 
-
-            // const user = {
-            //     name: 'nva',
-            //     age: 33,
-            //     id: 1,
-            // }
-            // const dataUpdate = {
-            //     age: 29,
-            // }
-            // return {
-            //     name: 'nva',
-            //     id: 1,
-            //     age: 29,
-            // }
-
-
+    await writeData(newData);
+};
+const replaceUser = async (userId, dataUpdate) => {
+    const oldData = await readAll();
+    const newData = oldData.map(user => {
+        if (user.id === userId) {
+            return {
+                ...dataUpdate,
+                id: userId
+            }
         }
         return user;
     });
@@ -101,17 +98,46 @@ const deleteUser = async (userId) => {
     // newData là array mới dựa trên oldData
     // c2
 
-    const index = oldData.findIndex(user => user.id === userId);
+    const index = oldData.findIndex(user => user.id === +userId);
+    //  === 
+    //  ==
+    // primary value 
+    // js có 7 kiểu dữ liệu nguyên thủy
+    // cấu trúc dữ liệu [] {} map set weakMap weakSet
+    // [] // map filter findIndex find forEach reduce for in for of ....
+    // {} // for in for of Object.keys Object.values Object.entries
+    // hàm function 
+
     // 
     console.log('index', index)
-    if(index !== -1) {
+    if (index !== -1) {
         oldData.splice(index, 1);
         // splice tác động đến array ban đầu
-
         // b3 save
         await writeData(oldData);
     }
 }
+
+const userLogin = async (username, password) => {
+    const oldData = await readAll();
+    let errMessage = ''
+    const user = oldData.find(user => {
+        if (user.username !== username) {
+            errMessage = 'username not found';
+            return false;
+        }
+        if (user.password !== password) {
+            errMessage = 'Password not match';
+            return false;
+        }
+        return true;
+    });
+
+    if (user) {
+        return user;
+    }
+    throw new Error(errMessage);
+};
 
 const main = async () => {
     const data = await readAll();
@@ -156,8 +182,10 @@ const main = async () => {
 // 
 // CURD
 module.exports = {
-    readAll, 
+    readAll,
     createNewUser,
     updateUser,
     deleteUser,
+    replaceUser,
+    userLogin,
 }

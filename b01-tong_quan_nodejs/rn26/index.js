@@ -22,7 +22,11 @@ const verifyUser = (req, res, next) => {
         }
         console.log('req.headers.authorization', req.headers.authorization)
         const token = req.headers.authorization.split(' ')[1];
-        const decoded = jwt.verify(token, PRIVATE_KEY);
+
+        const decoded = jwt.verify(
+            token, // token
+            PRIVATE_KEY // private key
+        );
         console.log('decoded', decoded);
         req.user = decoded;
         next();
@@ -89,7 +93,7 @@ app.post('/user', async (req, res) => {
     // res.send('<h2 style="font-size: 30px; color: blue">hello wiki</h2>');
 });
 
-app.put('/user/:userId', verifyUser,async (req, res) => {
+app.put('/user/:userId', verifyUser, async (req, res) => {
     const { userId } = req.params;
     const body = req.body;
     await replaceUser(userId, body);
@@ -100,7 +104,7 @@ app.put('/user/:userId', verifyUser,async (req, res) => {
 });
 
 // 
-app.delete('/user/:userID',verifyUser, (req, res) => {
+app.delete('/user/:userID', verifyUser, (req, res) => {
     const { userID } = req.params;
     deleteUser(userID);
     res.json({
@@ -118,7 +122,7 @@ app.post('/login', async (req, res) => {
         var token = jwt.sign(
             user, // body 
             PRIVATE_KEY, // footer chứa chữ ký
-            // { algorithm: 'RS256' } // header chứa thuật toán mã hóa
+            // { algorithm: 'RS256', expiresIn: '1h' } // header chứa thuật toán mã hóa
         );
 
         res.json({

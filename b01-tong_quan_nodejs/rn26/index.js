@@ -3,17 +3,19 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser')
 const {
-    readAll,
+    // readAll,
     createNewUser,
-    updateUser,
+    // updateUser,
     deleteUser,
     replaceUser,
     userLogin,
 } = require('./fs');
+const { connect } = require('./mongodb_connect');
+const { readAll, createUser, updateUser } = require('./mongodb_schema');
 const PRIVATE_KEY = 'adskjfabsfjkkw4u9283fbwecbshcbf94y34r3efb'
+connect();
 const verifyUser = (req, res, next) => {
     try {
-
         if (!req?.headers?.authorization) {
             res.status(401).json({
                 message: 'unauthorization',
@@ -78,28 +80,55 @@ app.get(
         const params = req.params;
         // value => string
         // console.log('params and query:', { params, query });
-        const data = await readAll()
-        res.status(401).json(data);
+        const nameRex = new RegExp(query.name, 'i');
+        const data = await readAll({
+            name: nameRex,
+        })
+        res.status(200).json(data);
+    });
+app.get(
+    '/user/:userId', // path
+    async (
+        req, // 
+        res
+    ) => {
+        // data gửi kèm: params, query, body(body-parser) lấy từ req 
+        // query, param : dữ liệu trên đường dẫn
+        const query = req.query;
+        const {userId} = req.params;
+        // value => string
+        // console.log('params and query:', { params, query });
+        const nameRex = new RegExp(query.name, 'i');
+        const data = await readAll({
+            _id: userId
+        })
+        res.status(200).json(data);
     });
 
 // validate 
 // sinh userId
 app.post('/user', async (req, res) => {
     const body = req.body;
-    await createNewUser(body);
+    await createUser(body);
     res.json({
         message: 'create user success',
     });
     // res.send('<h2 style="font-size: 30px; color: blue">hello wiki</h2>');
 });
 
-app.put('/user/:userId', verifyUser, async (req, res) => {
-    const { userId } = req.params;
-    const body = req.body;
-    await replaceUser(userId, body);
-    res.status(300).json({
-        message: 'replace user success',
-    });
+app.patch('/user/:userId', verifyUser, async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const body = req.body;
+        await updateUser(userId, body);
+        res.status(300).json({
+            message: 'replace user success',
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: error.message,
+        });
+    }
 
 });
 
@@ -135,12 +164,19 @@ app.post('/login', async (req, res) => {
         });
     }
 });
-app.post('/register', (req, res) => {
-    const body = req.body;
-    createNewUser(body);
-    res.json({
-        message: 'register success',
-    });
+app.post('/register', async (req, res) => {
+    try {
+        const body = req.body;
+        const user = await createUser(body);
+        res.json({
+            message: 'register success',
+            data: user,
+        });
+    } catch (err) {
+        res.status(400).json({
+            message: err.message,
+        });
+    }
 });
 
 app.patch('/user', verifyUser, async (req, res) => {
@@ -184,3 +220,8 @@ app.listen(3000, () => {
 
 // jwt
 
+
+// 1. đăng ký mongo cloud, taoj data
+
+// 2. schema ( schema type, schema option: default, required, unique, validate, index, sparse, trim, lowercase, uppercase, minlength, maxlength, match, enum, ref, timestamps)
+// 3. model (khởi tao model sau đó dùng model để thêm sửa xóa và query dữ liêu: regex, select, $gt, $lt, $in, $nin, $ne   buổi sau: sort, limit, skip, populate)

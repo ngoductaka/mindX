@@ -56,10 +56,10 @@ const deleteUser = async (id) => {
     return user;
 }
 
-const login = async (name, password) => {
+const login = async (name) => {
     return await User.findOne({
-        name, password
-    }).select('-password').lean();
+        name
+    }).lean();
 }
 
 module.exports = {

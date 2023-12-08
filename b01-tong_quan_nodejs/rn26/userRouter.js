@@ -9,6 +9,7 @@ const {
 } = require('./fs');
 
 const { verifyUser, generateToken } = require('./middleware');
+const { cryptPassword } = require('./helper');
 const { readAll, createUser, updateUser } = require('./user_schema');
 const commentRouter = Router();
 // request  
@@ -107,8 +108,15 @@ commentRouter.post('/login', async (req, res) => {
 });
 commentRouter.post('/register', async (req, res) => {
     try {
-        const body = req.body;
-        const user = await createUser(body);
+        const {
+            password,
+            ...body
+        } = req.body;
+        
+        const hashPassword = await cryptPassword(password);
+
+
+        const user = await createUser({...body, password: hashPassword});
         res.json({
             message: 'register success',
             data: user,

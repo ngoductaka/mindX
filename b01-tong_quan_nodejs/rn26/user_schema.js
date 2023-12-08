@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
         default: 'user',
     },
     avatar: String,
+    tags: {
+        type: [String],
+        default: ['student', 'good'],
+    }
 }, {
     timestamps: true,
     // collection: 'users',
@@ -25,9 +29,14 @@ const User = mongoose.model('User', userSchema);
 // createUser
 
 const readAll = async (filter = {}) => {
-    const users = await User.find(filter, 'name age role').lean();
+    const users = await User.find(filter);
     return users;
 };
+
+const getUserById = (id) => {
+    return User.findById(id);
+}
+
 
 
 const createUser = async (data) => {
@@ -47,11 +56,19 @@ const deleteUser = async (id) => {
     return user;
 }
 
+const login = async (name, password) => {
+    return await User.findOne({
+        name, password
+    }).select('-password').lean();
+}
+
 module.exports = {
     readAll,
     createUser,
     updateUser,
     deleteUser,
+    getUserById,
+    login,
 };
 
 // CURD 
@@ -68,3 +85,28 @@ module.exports = {
 // virtual
 
 
+
+// category
+// {
+//     _id: "",
+//     name: "",
+//     desctiprion: "",
+//     comment; [ // embeded
+//         {
+//             user: "",
+//             content: "",
+//             like: 0,
+//             dislike: 0,
+//         }
+//     ]
+// }
+//  c2
+// comment collection:
+// {
+//     user: "", // reference to user collection
+//     content: "",
+//     like: 0,
+//     dislike: 0,
+//     category: "", // reference to category collection
+// }
+// => request unit  || crud 

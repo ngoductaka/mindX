@@ -10,6 +10,7 @@ const app = express();
 cors(app);
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static('uploads'))
 
 // parse application/json
 app.use(bodyParser.json());
